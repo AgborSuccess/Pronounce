@@ -47,11 +47,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onInit(int i) {
                 if (i == TextToSpeech.SUCCESS) {
-                    int result = finalTts.setLanguage(Locale.US);
-                    if (result == TextToSpeech.LANG_MISSING_DATA ||
-                            result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                        Log.e("TTS", "Lenguage not supported");
-                    }
+                    Toast.makeText(getActivity(), "TetToSpeech Engine is Gonna work", Toast.LENGTH_SHORT).show();
                 } else {
                     Log.e("TTS", "Initialization failed");
                 }
@@ -63,8 +59,12 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 Toast.makeText(getContext(), "Its working and the problem is from the tts",Toast.LENGTH_SHORT).show();
                 String txtToSpeech = txt.getText().toString();
-                finalTts.speak(txtToSpeech, TextToSpeech.QUEUE_ADD, null);
-                finalTts.shutdown();
+
+//                Generates Error cos of te below line of code @Line64
+                finalTts.speak(txtToSpeech, TextToSpeech.QUEUE_FLUSH, null);
+//
+//                finalTts.speak(txtToSpeech, TextToSpeech.QUEUE_ADD, null);
+//                finalTts.shutdown();
             }
         });
 
@@ -81,5 +81,6 @@ public class HomeFragment extends Fragment {
 
         super.onDestroyView();
         binding = null;
+        
     }
 }
