@@ -9,6 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pronouncetwo.databinding.FragmentDashboardBinding;
 
@@ -26,6 +28,13 @@ public class DashboardFragment extends Fragment {
 
         final TextView textView = binding.textDashboard;
         dashboardViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+
+        RecyclerView recyclerView;
+        recyclerView = binding.recyclerview;
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        Notification_adapter notification_adapter = new Notification_adapter(getActivity());
+        recyclerView.setAdapter(notification_adapter);
+
         return root;
     }
 

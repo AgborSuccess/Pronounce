@@ -62,6 +62,9 @@ public class HomeFragment extends Fragment {
 
 //                Generates Error cos of te below line of code @Line64
                 finalTts.speak(txtToSpeech, TextToSpeech.QUEUE_FLUSH, null);
+
+
+
 //
 //                finalTts.speak(txtToSpeech, TextToSpeech.QUEUE_ADD, null);
 //                finalTts.shutdown();
@@ -72,15 +75,16 @@ public class HomeFragment extends Fragment {
 
     }
 
-    
+
 
 
 
     @Override
     public void onDestroyView() {
 
+
         super.onDestroyView();
         binding = null;
-        
+
     }
 }

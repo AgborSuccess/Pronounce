@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:background="@drawable/notification_item_background"
+    android:layout_marginBottom="10dp">
+
+
+    <TextView
+        android:id="@+id/notification_title"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:text="Title"
+        android:textColor="@color/white"
+        android:paddingTop="3dp"/>
+    <TextView
+        android:id="@+id/notification_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text=" This is some of the most important content"
+        android:layout_below="@id/notification_title"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/notification_time"
+        android:text="15 sep 2022"
+        android:layout_below="@id/notification_text"
+        android:gravity="right"
+        android:textSize="12dp"/>
+
+
+
+</RelativeLayout>
+
