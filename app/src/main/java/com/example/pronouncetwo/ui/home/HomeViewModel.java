@@ -10,7 +10,6 @@ public class HomeViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    ImageButton playButton;
 
     public HomeViewModel() {
         mText = new MutableLiveData<>();

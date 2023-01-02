@@ -1,7 +1,10 @@
 package com.example.pronouncetwo.ui.dashboard;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,6 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pronouncetwo.R;
@@ -29,6 +34,8 @@ public class Notification_adapter extends RecyclerView.Adapter<Notification_adap
     @Override
     public myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new myViewHolder(LayoutInflater.from(context).inflate(R.layout.notifications_layout, parent, false));
+
+
     }
 
     @Override
@@ -61,6 +68,27 @@ public class Notification_adapter extends RecyclerView.Adapter<Notification_adap
                 menu.show();
 
                 return true;
+            }
+        });
+
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+//                    NotificationChannel channel = new NotificationChannel("My Notification", "My Notification", NotificationManager.IMPORTANCE_HIGH);
+//                    NotificationManager manager = getSystemService(NotificationManager.class);
+//                    manager.createNotificationChannel(channel);
+//                }
+
+
+                NotificationCompat.Builder builder= new NotificationCompat.Builder(context.getApplicationContext(), "notification");
+                builder.setContentTitle(holder.NotificationTitle.getText());
+                builder.setContentText(holder.NotificationDescription.getText());
+                builder.setAutoCancel(true);
+
+                NotificationManagerCompat managerCompat = NotificationManagerCompat.from(context.getApplicationContext());
+                managerCompat.notify(1,builder.build());
             }
         });
     }

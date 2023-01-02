@@ -10,10 +10,37 @@ public class NotificationsViewModel extends ViewModel {
 
     public NotificationsViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is notifications fragment");
+        mText.setValue("Settings");
     }
 
     public LiveData<String> getText() {
         return mText;
+    }
+
+
+
+
+
+
+
+
+
+    private float seekBarPitch;
+    private float seekBarSpeed;
+
+    public float getSeekBarPitch() {
+        return seekBarPitch;
+    }
+
+    public void setSeekBarPitch(float seekBarPitch) {
+        this.seekBarPitch = seekBarPitch;
+    }
+
+    public float getSeekBarSpeed() {
+        return seekBarSpeed;
+    }
+
+    public void setSeekBarSpeed(float seekBarSpeed) {
+        this.seekBarSpeed = seekBarSpeed;
     }
 }

@@ -12,13 +12,12 @@
         android:id="@+id/Fragment_tag"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Home"
-            android:textSize="35sp"
+            android:textSize="25sp"
             android:textStyle="bold"
             android:padding="10dp"/>
     </LinearLayout>
@@ -67,6 +66,14 @@
             android:gravity="center"
             android:inputType="text"
             android:textSize="20sp"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/TTSconfirmation"
+            android:layout_marginTop="20dp"
+            />
     </LinearLayout>
 
 
