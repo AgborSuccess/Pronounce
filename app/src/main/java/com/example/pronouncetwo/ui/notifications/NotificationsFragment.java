@@ -46,6 +46,52 @@ public class NotificationsFragment extends Fragment {
 
 
 
+
+        seekBarPitch.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                // Update the value of the seekBarPitch in the notifications view model
+                notificationsViewModel.setSeekBarPitch(progress);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                notificationsViewModel.setSeekBarPitch(seekBar.getProgress());
+            }
+
+            // Other callbacks of the listener
+        });
+
+        seekBarSpeed.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                // Update the value of the seekBarSpeed in the notifications view model
+                notificationsViewModel.setSeekBarSpeed(progress);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                notificationsViewModel.setSeekBarSpeed(seekBar.getProgress());
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            // Other callbacks of the listener
+        });
+
+
+
+
+
+
         return root;
     }
 
