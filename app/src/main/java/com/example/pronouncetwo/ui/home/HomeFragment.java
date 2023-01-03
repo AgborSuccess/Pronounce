@@ -3,12 +3,15 @@ package com.example.pronouncetwo.ui.home;
 import static android.graphics.Color.rgb;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
@@ -33,7 +36,7 @@ public class HomeFragment extends Fragment implements TextToSpeech.OnInitListene
     private FragmentHomeBinding binding;
     private TextToSpeech TTS;
     private TextView confirmationText;
-    private ImageButton playButton;
+    private Button playButton;
 
     private float pitch;
     private float speed;
@@ -74,6 +77,20 @@ public class HomeFragment extends Fragment implements TextToSpeech.OnInitListene
 
 
 
+        playButton.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                switch (motionEvent.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        view.setBackgroundColor(Color.GRAY);
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        view.setBackgroundColor(Color.WHITE);
+                        break;
+                }
+                return false;
+            }
+        });
 
 
         playButton.setOnClickListener(new View.OnClickListener() {

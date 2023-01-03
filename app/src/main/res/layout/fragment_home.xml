@@ -37,14 +37,34 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal" />
 
-        <ImageButton
+
+
+
+
+
+        <Button
             android:id="@+id/PlayButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="#00000000"
-            android:src="@drawable/ic_baseline_play_circle_filled_24" />
-<!--        <com.gauravk.audiovisualizer.visualizer.BlastVisualizer-->
+            android:background="@drawable/neumorphic_button_background"
+            android:elevation="4dp"
+            android:src="@drawable/ic_baseline_play_arrow_24"
+             />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!--        <com.gauravk.audiovisualizer.visualizer.BlastVisualizer-->
 <!--            xmlns:custom="http://schemas.android.com/apk/res-auto"-->
 <!--            android:id="@+id/blast"-->
 <!--            android:layout_width="match_parent"-->
