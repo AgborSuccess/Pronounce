@@ -1,5 +1,7 @@
 package com.example.pronouncetwo.ui.notifications;
 
+import android.widget.SeekBar;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
