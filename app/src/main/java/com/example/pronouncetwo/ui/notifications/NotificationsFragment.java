@@ -35,12 +35,21 @@ public class NotificationsFragment extends Fragment {
 
 
 
-
         seekBarPitch = binding.pitchSeekBar;
         seekBarSpeed = binding.speedSeekBar;
 
-        notificationsViewModel.setSeekBarPitch(seekBarPitch.getProgress());
-        notificationsViewModel.setSeekBarSpeed(seekBarSpeed.getProgress());
+
+
+
+        SharedViewModel sharedViewModel = new ViewModelProvider(this).get(SharedViewModel.class);
+        sharedViewModel.setPitch(seekBarPitch.getProgress());
+        sharedViewModel.setSpeed(seekBarSpeed.getProgress());
+
+
+
+
+
+
 
 
 
@@ -51,7 +60,7 @@ public class NotificationsFragment extends Fragment {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 // Update the value of the seekBarPitch in the notifications view model
-                notificationsViewModel.setSeekBarPitch(progress);
+                sharedViewModel.setPitch(progress);
             }
 
             @Override
@@ -61,7 +70,7 @@ public class NotificationsFragment extends Fragment {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                notificationsViewModel.setSeekBarPitch(seekBar.getProgress());
+                sharedViewModel.setPitch(seekBar.getProgress());
             }
 
             // Other callbacks of the listener
@@ -71,12 +80,12 @@ public class NotificationsFragment extends Fragment {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 // Update the value of the seekBarSpeed in the notifications view model
-                notificationsViewModel.setSeekBarSpeed(progress);
+                sharedViewModel.setSpeed(progress);
             }
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-                notificationsViewModel.setSeekBarSpeed(seekBar.getProgress());
+                sharedViewModel.setSpeed(seekBar.getProgress());
             }
 
             @Override

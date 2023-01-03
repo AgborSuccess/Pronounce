@@ -23,6 +23,7 @@ import com.example.pronouncetwo.R;
 import com.example.pronouncetwo.databinding.FragmentHomeBinding;
 import com.example.pronouncetwo.ui.notifications.NotificationsFragment;
 import com.example.pronouncetwo.ui.notifications.NotificationsViewModel;
+import com.example.pronouncetwo.ui.notifications.SharedViewModel;
 
 import java.net.URISyntaxException;
 import java.util.Locale;
@@ -33,6 +34,9 @@ public class HomeFragment extends Fragment implements TextToSpeech.OnInitListene
     private TextToSpeech TTS;
     private TextView confirmationText;
     private ImageButton playButton;
+
+    private float pitch;
+    private float speed;
 
 
     @Override
@@ -58,8 +62,14 @@ public class HomeFragment extends Fragment implements TextToSpeech.OnInitListene
         confirmationText = binding.TTSconfirmation;
 
         NotificationsViewModel notificationsViewModel = new ViewModelProvider(this).get(NotificationsViewModel.class);
-        float seekBarPitch = notificationsViewModel.getSeekBarPitch();
-        float seekBarSpeed = notificationsViewModel.getSeekBarSpeed();
+
+
+
+        SharedViewModel sharedViewModel = new ViewModelProvider(this).get(SharedViewModel.class);
+        sharedViewModel.getPitch().observe(getViewLifecycleOwner(), newPitch -> this.pitch = newPitch);
+        sharedViewModel.getSpeed().observe(getViewLifecycleOwner(), newSpeed -> this.speed = newSpeed);
+
+
 
 
 
@@ -70,7 +80,7 @@ public class HomeFragment extends Fragment implements TextToSpeech.OnInitListene
             @Override
             public void onClick(View v) {
                 String text = txt.getText().toString();
-                speak(text, seekBarSpeed, seekBarPitch);
+                speak(text);
             }
         });
 
@@ -88,11 +98,10 @@ public class HomeFragment extends Fragment implements TextToSpeech.OnInitListene
 
 
 
-    private void speak(String text, float seekBarSpeed, float seekBarPitch){
+    private void speak(String text){
 
-        float pitch = (float) seekBarPitch / 50;
+
         if(pitch < 0.1)  pitch = 0.1f;
-        float speed = (float) seekBarSpeed / 50;
         if(speed < 0.1)  speed = 0.1f;
 
         TTS.setPitch(pitch);

@@ -37,12 +37,4 @@ public class NotificationsViewModel extends ViewModel {
     public void setSeekBarPitch(float seekBarPitch) {
         this.seekBarPitch = seekBarPitch;
     }
-
-    public float getSeekBarSpeed() {
-        return seekBarSpeed;
-    }
-
-    public void setSeekBarSpeed(float seekBarSpeed) {
-        this.seekBarSpeed = seekBarSpeed;
-    }
 }
