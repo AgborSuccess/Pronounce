@@ -65,15 +65,15 @@ public class NotificationsFragment extends Fragment {
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-
+                // Update the value of the seekBarPitch in the notifications view model
+                sharedViewModel.setPitch(seekBar.getProgress());
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
+                // Update the value of the seekBarPitch in the notifications view model
                 sharedViewModel.setPitch(seekBar.getProgress());
             }
-
-            // Other callbacks of the listener
         });
 
         seekBarSpeed.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -85,15 +85,15 @@ public class NotificationsFragment extends Fragment {
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
+                // Update the value of the seekBarSpeed in the notifications view model
                 sharedViewModel.setSpeed(seekBar.getProgress());
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
+                // Update the value of the seekBarSpeed in the notifications view model
+                sharedViewModel.setSpeed(seekBar.getProgress());
             }
-
-            // Other callbacks of the listener
         });
 
 
