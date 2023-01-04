@@ -17,6 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Home"
+            android:fontFamily="serif-monospace"
             android:textSize="25sp"
             android:textStyle="bold"
             android:padding="10dp"/>
@@ -32,24 +33,28 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <LinearLayout
+
+
+
+
+
+        <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" />
+            app:cardCornerRadius="1000dp"
+            app:cardElevation="10dp">
+            <ImageButton
+                android:id="@+id/PlayButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/transparent"
+                android:elevation="4dp"
+                android:src="@drawable/ic_baseline_play_arrow_24"
+                />
+
+        </androidx.cardview.widget.CardView>
 
 
-
-
-
-
-        <Button
-            android:id="@+id/PlayButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/neumorphic_button_background"
-            android:elevation="4dp"
-            android:src="@drawable/ic_baseline_play_arrow_24"
-             />
 
 
 

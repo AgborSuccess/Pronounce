@@ -16,6 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/text_dashboard"
+            android:fontFamily="serif-monospace"
             android:textSize="25sp"
             android:textStyle="bold"
             android:padding="10dp"/>

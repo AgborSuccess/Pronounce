@@ -2,7 +2,9 @@ package com.example.pronouncetwo.ui.home;
 
 import static android.graphics.Color.rgb;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
@@ -36,7 +38,8 @@ public class HomeFragment extends Fragment implements TextToSpeech.OnInitListene
     private FragmentHomeBinding binding;
     private TextToSpeech TTS;
     private TextView confirmationText;
-    private Button playButton;
+    private ImageButton playButton;
+    private EditText txt;
 
     private float pitch;
     private float speed;
@@ -61,7 +64,7 @@ public class HomeFragment extends Fragment implements TextToSpeech.OnInitListene
         homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
 
         playButton = binding.PlayButton;
-        EditText txt = binding.TxtToSpeechEditText;
+        txt = binding.TxtToSpeechEditText;
         confirmationText = binding.TTSconfirmation;
 
         NotificationsViewModel notificationsViewModel = new ViewModelProvider(this).get(NotificationsViewModel.class);
@@ -87,6 +90,8 @@ public class HomeFragment extends Fragment implements TextToSpeech.OnInitListene
                     case MotionEvent.ACTION_UP:
                         view.setBackgroundColor(Color.WHITE);
                         break;
+                    default:
+                        view.setBackgroundColor(Color.WHITE);
                 }
                 return false;
             }
@@ -97,7 +102,16 @@ public class HomeFragment extends Fragment implements TextToSpeech.OnInitListene
             @Override
             public void onClick(View v) {
                 String text = txt.getText().toString();
-                speak(text);
+
+                if (text.isEmpty() == true){
+                    confirmationText.setText("Put in Some Text");
+                    confirmationText.setTextColor(rgb(255, 0, 0));
+                }else{
+                    speak(text);
+                    confirmationText.setText("TTS Running....");
+                    confirmationText.setTextColor(rgb(0, 255, 0));
+                }
+
             }
         });
 
@@ -168,4 +182,38 @@ public class HomeFragment extends Fragment implements TextToSpeech.OnInitListene
         });
 
     }
+
+
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        // Get the shared preferences
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MY_PREFERENCES", Context.MODE_PRIVATE);
+
+        // Get the editor
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        // Store the value of the EditText in the shared preferences
+        editor.putString("edit_text_value", txt.getText().toString());
+
+        // Commit the changes
+        editor.apply();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        // Get the shared preferences
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MY_PREFERENCES", Context.MODE_PRIVATE);
+
+        // Retrieve the value of the EditText from the shared preferences
+        String editTextValue = sharedPreferences.getString("edit_text_value", "");
+
+        // Set the value of the EditText
+        txt.setText(editTextValue);
+    }
+
 }
