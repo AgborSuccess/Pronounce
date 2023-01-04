@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Home"
-            android:fontFamily="serif-monospace"
+            android:fontFamily="@font/poppins_black"
             android:textSize="25sp"
             android:textStyle="bold"
             android:padding="10dp"/>
