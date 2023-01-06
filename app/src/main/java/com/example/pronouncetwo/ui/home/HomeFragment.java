@@ -40,6 +40,7 @@ public class HomeFragment extends Fragment implements TextToSpeech.OnInitListene
     private TextView confirmationText;
     private ImageButton playButton;
     private EditText txt;
+    private Locale myLocale;
 
     private float pitch;
     private float speed;
@@ -67,13 +68,24 @@ public class HomeFragment extends Fragment implements TextToSpeech.OnInitListene
         txt = binding.TxtToSpeechEditText;
         confirmationText = binding.TTSconfirmation;
 
-        NotificationsViewModel notificationsViewModel = new ViewModelProvider(this).get(NotificationsViewModel.class);
 
 
 
         SharedViewModel sharedViewModel = new ViewModelProvider(this).get(SharedViewModel.class);
         sharedViewModel.getPitch().observe(getViewLifecycleOwner(), newPitch -> this.pitch = newPitch);
         sharedViewModel.getSpeed().observe(getViewLifecycleOwner(), newSpeed -> this.speed = newSpeed);
+
+        sharedViewModel.getTTSLocale().observe(getViewLifecycleOwner(), locale -> {
+            // Set the Locale on the TTS engine here
+            // For example:
+            TTS.setLanguage(locale);
+            myLocale = Locale.forLanguageTag(String.valueOf(locale));
+
+
+
+
+            Log.d("LOCALE", "THe Current Locale" + locale);
+        });
 
 
 
@@ -115,6 +127,8 @@ public class HomeFragment extends Fragment implements TextToSpeech.OnInitListene
             }
         });
 
+
+
         return root;
 
     }
@@ -137,6 +151,7 @@ public class HomeFragment extends Fragment implements TextToSpeech.OnInitListene
 
         TTS.setPitch(pitch);
         TTS.setSpeechRate(speed);
+
 
         TTS.speak(text, TextToSpeech.QUEUE_FLUSH, null);
     }
@@ -165,15 +180,10 @@ public class HomeFragment extends Fragment implements TextToSpeech.OnInitListene
                 if (status == TextToSpeech.SUCCESS){
                     confirmationText.setText("TTS Running....");
                     confirmationText.setTextColor(rgb(0, 255, 0));
+                    playButton.setEnabled(true);
 
-                    int result = TTS.setLanguage(Locale.US);
 
-                    if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED){
-                        confirmationText.setText("Missing Data or Laguage Not Supported");
-                        confirmationText.setTextColor(rgb(255, 0, 0));
-                    }else{
-                        playButton.setEnabled(true);
-                    }
+
                 }else{
                     confirmationText.setText("TTS not Running....");
                     confirmationText.setTextColor(rgb(255, 0, 0));

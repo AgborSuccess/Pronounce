@@ -1,17 +1,30 @@
 <resources>
-    <string name="app_name">Pronounce Two</string>
+    <string name="app_name">Pronounce</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="speech_to_text">Speech TO Text</string>
 
     <string-array name="languages">
         <item>US</item>
         <item>GERMAN</item>
         <item>FRENCH</item>
         <item>DUTCH</item>
-        <item></item>
-        <item>US</item>
-        <item>US</item>
-        <item>US</item>
+        <item>UK</item>
+        <item>POLISH</item>
+        <item>PORTUGUESE</item>
+        <item>GHANAIAN</item>
+        <item>KOREA</item>
+        <item>KOREAN</item>
+        <item>TAIWAN</item>
+        <item>JAPAN</item>
+        <item>JAPANESE</item>
+        <item>ITALY</item>
+        <item>ITALIAN</item>
+        <item>CHINA</item>
+        <item>CHINESE</item>
+        <item>CANADA_FRENCH</item>
+        <item>CANADA</item>
+        <item>FRANCE</item>
     </string-array>
 </resources>

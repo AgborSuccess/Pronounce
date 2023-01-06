@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/text_notifications"
             android:textSize="25sp"
-            android:fontFamily="serif-monospace"
+            android:fontFamily="@font/poppins_semi_bold"
             android:textStyle="bold"
             android:padding="10dp"/>
     </LinearLayout>
@@ -65,12 +65,13 @@
                             android:layout_margin="20dp"
                             android:text="Pitch"
                             android:textAlignment="textStart"
-                            android:textSize="17dp"
-                            android:textStyle="bold" />
+                            android:textSize="17sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/poppins_italic"/>
 
                         <SeekBar
                             android:id="@+id/pitchSeekBar"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="20dp"
                             android:layout_weight="1"
@@ -101,11 +102,12 @@
                             android:layout_margin="20dp"
                             android:textAlignment="textStart"
                             android:textStyle="bold"
-                            android:textSize="17dp"/>
+                            android:textSize="17sp"
+                            android:fontFamily="@font/poppins_italic"/>
 
                         <SeekBar
                             android:id="@+id/speedSeekBar"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:layout_margin="20dp"
@@ -138,9 +140,10 @@
                             android:text="Language:"
                             android:layout_margin="20dp"
                             android:textStyle="bold"
-                            android:textSize="17dp"
+                            android:textSize="17sp"
                             android:gravity="left"
-                            android:layout_weight="1"/>
+                            android:layout_weight="1"
+                            android:fontFamily="@font/poppins_italic"/>
 
                         <Spinner
                             android:id="@+id/language_spinner"
@@ -150,6 +153,47 @@
                             android:layout_margin="20dp"
                             android:layout_weight="1"/>
                     </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:elevation="5dp"
+                    app:cornerRadius="5dp"
+                    android:layout_margin="8dp"
+                    app:cardElevation="4dp"
+                    android:layout_gravity="center">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:id="@+id/box_4"
+                        android:layout_gravity="center_vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/speech_to_text"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/poppins_italic"
+                            android:layout_margin="20dp"
+
+                            android:layout_weight="1"
+                            android:gravity="left"/>
+                        <Switch
+                            android:id="@+id/appSwitcher"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:layout_margin="20dp"
+                            android:layout_weight="1"
+                            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+
+
+                    </LinearLayout>
+
                 </androidx.cardview.widget.CardView>
 
 

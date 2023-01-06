@@ -1,16 +1,21 @@
 package com.example.pronouncetwo.ui.dashboard;
 
 public class Notification{
-    String title;
+    String Title;
     String description;
     long createdTime;
 
-    public String getTitle() {
-        return title;
+    private String title;
+    private String body;
+
+    public Notification(String title, String body) {
+        this.title = title;
+        this.body = body;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+
+    public void setTitle(String Title) {
+        this.Title = Title;
     }
 
     public String getDescription() {
@@ -28,4 +33,19 @@ public class Notification{
     public void setCreatedTime(long createdTime) {
         this.createdTime = createdTime;
     }
+
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+
+
+
+
+
 }
