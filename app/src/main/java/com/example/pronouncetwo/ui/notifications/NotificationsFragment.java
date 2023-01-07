@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -31,6 +33,11 @@ public class NotificationsFragment extends Fragment {
     private SeekBar seekBarSpeed;
     private Spinner language_spinner;
     private Switch appSwitch;
+    private CardView cardView1;
+    private CardView cardView2;
+    private CardView cardView3;
+    private CardView cardView4;
+
 
 
     private SharedPreferences spinnerSharedPreferences;
@@ -175,7 +182,16 @@ public class NotificationsFragment extends Fragment {
 
 
 
+//      Adding Animation To the Parent UI Element
+        cardView1 = binding.cardView1;
+        cardView2 = binding.cardView2;
+        cardView3 = binding.cardView3;
+        cardView4 = binding.cardView4;
 
+        cardView1.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.anim_two));
+        cardView2.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.anim_two));
+        cardView3.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.anim_two));
+        cardView4.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.anim_two));
 
         return root;
     }

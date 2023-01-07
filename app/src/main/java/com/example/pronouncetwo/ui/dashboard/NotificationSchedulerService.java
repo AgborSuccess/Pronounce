@@ -1,9 +1,8 @@
 package com.example.pronouncetwo.ui.dashboard;
 
 import android.app.IntentService;
+import android.content.Context;
 import android.content.Intent;
-
-import com.example.pronouncetwo.ui.dashboard.Notification;
 
 import java.util.List;
 import java.util.Random;
@@ -17,12 +16,18 @@ public class NotificationSchedulerService extends IntentService {
     private static final String NOTIFICATION_CHANNEL_ID = "my_notification_channel";
     private static final long INTERVAL = 300000; // 5 minutes
     private List<Notification> mNotifications;
+    private Notification_adapter mAdapter;
+    private Context mContext;
+
 
 
     private ScheduledExecutorService mScheduledExecutorService;
 
-    public NotificationSchedulerService() {
+    public NotificationSchedulerService(List<Notification> mNotifications, Notification_adapter mAdapter, Context mContext) {
         super("NotificationSchedulerService");
+        this.mNotifications = mNotifications;
+        this.mAdapter = mAdapter;
+        this.mContext = mContext;
     }
 
     @Override
@@ -42,15 +47,29 @@ public class NotificationSchedulerService extends IntentService {
             }
         }, 0, INTERVAL, TimeUnit.MILLISECONDS);
     }
-
     private void sendNotification() {
         // Get a random message
         final String[] messages = {"Hello!", "How are you?", "This is a random message"};
         final String message = messages[new Random().nextInt(messages.length)];
 
+        // Create a new notification object
+        Notification notification = new Notification("Random Message", message);
+        mNotifications.add(notification);
+
+
+//
+//        Intent broadcastIntent = new Intent(NotificationBroadcastReceiver.class.getName());
+//        broadcastIntent.putExtra("notification", notification);
+//        mContext.sendBroadcast(broadcastIntent);
+
+
         // Send the notification using FCM
         sendMessageToTopic(message);
+
+
+
     }
+
 
     private void sendMessageToTopic(final String message) {
         // [START send_to_topic]
@@ -59,4 +78,6 @@ public class NotificationSchedulerService extends IntentService {
 
         // See documentation
     }
+
+
 }
